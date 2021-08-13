@@ -39,9 +39,11 @@ Step by step
 
 ![rect](https://user-images.githubusercontent.com/82842186/129265616-3831bafc-1036-435b-8641-5a35967d8e12.png)
 
-3. The program completes the geometric area and perimeter calculation and returns to the menu. (Go back to the first step)
+3. The program completes the geometric area and perimeter calculation and returns to the menu.
 
 ![rectresult](https://user-images.githubusercontent.com/82842186/129265644-f2f4df34-de09-4c55-928f-cd44234a797d.png)
+
+4. Go back to the first step to start over.
 
 ## License
 
