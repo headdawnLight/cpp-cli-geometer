@@ -5,6 +5,68 @@
 #include <string>
 #include <cmath>
 
+class Square
+{
+public:
+
+    double squareEdge;
+
+    double squarePeri(double squareEdge)
+    {
+        return 4 * squareEdge;
+    }
+    double squareArea(double squareEdge)
+    {
+        return squareEdge * squareEdge;
+    }
+};
+
+class Triangle
+{
+public:
+
+    double triA, triB, triC, triH;
+
+    void setValues(double, double, double, double);
+
+    double triPeri()
+    {
+        return triA + triB + triC;
+    }
+    double triArea()
+    {
+        return ((triB * triH) / 2);
+    }
+};
+
+void Triangle::setValues(double A, double B, double C, double H)
+{
+    triA = A; triB = B; triC = C; triH = H;
+}
+
+class Rectangle
+{
+public:
+
+    double rectShort, rectLong;
+
+    void setValues(double, double);
+
+    double rectPeri()
+    {
+        return (2 * rectShort) + (2 * rectLong);
+    }
+    double rectArea()
+    {
+        return rectShort * rectLong;
+    }
+};
+
+void Rectangle::setValues(double A, double B)
+{
+    rectShort = A; rectLong = B;
+}
+
 using namespace std;
 void showMenu();
 void runMenu();
@@ -16,7 +78,7 @@ void showRectangle();
 void calculateRectangle();
 
 char main() // Works with nested global void functions.
-{   
+{
     string Menu = "---Welcome to GEOMETER!";
     cout << Menu << endl;
     runMenu();
@@ -36,31 +98,27 @@ void runMenu() // Runs the choice and shows the menu every time.
 
     int choice;
 
-        cout << "\n-->Enter your choice: ";
-        cin >> choice;
-        cout << "\n" << endl;
+    cout << "\n-->Enter your choice: ";
+    cin >> choice;
+    cout << "\n" << endl;
 
-        if (choice < 1 || choice > 3)
-        {
-            cout << "---An invalid choice! Choose again!" << endl << endl;
-            runMenu();
-        }
-       
-        if (choice == 1)
-        {
-            calculateSquare();
-        }
-        else if (choice == 2)
-        {
-            calculateTriangle();
-        }
-        else if (choice == 3)
-        {
-            calculateRectangle();
-        }
-        else {
-            runMenu();
-        }
+    if (choice < 1 || choice > 3)
+    {
+        cout << "---An invalid choice! Choose again!" << endl << endl; runMenu();
+    }
+
+    if (choice == 1)
+    {
+        calculateSquare();
+    }
+    else if (choice == 2)
+    {
+        calculateTriangle();
+    }
+    else if (choice == 3)
+    {
+        calculateRectangle();
+    }
 }
 
 void showSquare() // Shows two-dimensional square and its geometric formulas.
@@ -80,19 +138,18 @@ void calculateSquare()  // Calculates the perimeter and area of square.
 {
     showSquare();
 
-    double squareEdge, squarePeri, squareArea;
+    Square obj;
 
     cout << "\n-->Enter the edge of the square: ";
-    cin >> squareEdge;
+    cin >> obj.squareEdge;
 
-    squarePeri = 4 * squareEdge;
+    cout << "\n---Perimeter of the square: "
+        << obj.squarePeri(obj.squareEdge) << " meters or etc." << endl;
 
-    squareArea = squareEdge * squareEdge; 
+    cout << "\n---Area of the square: "
+        << obj.squareArea(obj.squareEdge) << " square meters or etc."
+        << endl << endl << endl;
 
-    cout << "\n---Perimeter of the square: " << squarePeri << " meters or etc." << endl;
-    cout << "\n---Area of the square: " << squareArea << " square meters or etc." 
-         << endl << endl << endl;
-        
     runMenu();
 }
 
@@ -114,7 +171,7 @@ void calculateTriangle() // Calculates the perimeter and area of triangle.
 {
     showTriangle();
 
-    double triA, triB, triC, triH, triPeri, triArea;
+    double triA, triB, triC, triH;
 
     cout << "\n-->Enter the edge of the triangle: ";
     cin >> triA;
@@ -128,13 +185,15 @@ void calculateTriangle() // Calculates the perimeter and area of triangle.
     cout << "\n-->Enter the height of the triangle: ";
     cin >> triH;
 
-    triPeri = triA + triB + triC;
+    Triangle obj;
 
-    triArea = ((triB*triH) / 2);
+    obj.setValues(triA, triB, triC, triH);
 
-    cout << "\n---Perimeter of the triangle: " << triPeri << " meters or etc." << endl;
-    cout << "\n---Area of the triangle: " << triArea << " square meters or etc."
-         << endl << endl << endl;
+    cout << "\n---Perimeter of the triangle: "
+        << obj.triPeri() << " meters or etc." << endl;
+
+    cout << "\n---Area of the triangle: "
+        << obj.triArea() << " square meters or etc." << endl << endl << endl;
 
     runMenu();
 }
@@ -156,7 +215,7 @@ void calculateRectangle() // Calculates the perimeter and area of rectangle.
 {
     showRectangle();
 
-    double rectShort, rectLong, rectPeri, rectArea;
+    double rectShort, rectLong;
 
     cout << "\n-->Enter the short edge of the rectangle: ";
     cin >> rectShort;
@@ -164,13 +223,14 @@ void calculateRectangle() // Calculates the perimeter and area of rectangle.
     cout << "\n-->Enter the long edge of the rectangle: ";
     cin >> rectLong;
 
-    rectPeri = (2 * rectShort) + (2 * rectLong);
+    Rectangle obj;
 
-    rectArea = rectShort * rectLong;
+    obj.setValues(rectShort, rectLong);
 
-    cout << "\n---Perimeter of the rectangle: " << rectPeri << " meters or etc." << endl;
-    cout << "\n---Area of the rectangle: " << rectArea << " square meters or etc."
-         << endl << endl << endl;
+    cout << "\n---Perimeter of the rectangle: "
+        << obj.rectPeri() << " meters or etc." << endl;
+    cout << "\n---Area of the rectangle: "
+        << obj.rectArea() << " square meters or etc." << endl << endl << endl;
 
     runMenu();
 }
