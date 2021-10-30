@@ -1,6 +1,6 @@
 # cpp-cli-geometer
 
-This is a simple geometric calculation program that performs various geometrical operations and runs in a command line interface. It was developed on Microsoft Visual Studio 2019 with the C++ programming language.age.
+This is a simple geometric calculation program that performs various geometrical operations and runs in a command line interface. It was developed on Microsoft Visual Studio 2019 with the C++ programming language.
 
 ## Introduction
 
